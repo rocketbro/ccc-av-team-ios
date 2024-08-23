@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WorkflowTabView: View {
-    //@State private var decoded: [QuickFix] = []
     private var flows: [Workflow] = dataManager.loadFromDisk(table: .WORKFLOWS) ?? [Workflow()]
+    private var categories: [AVCategory] = dataManager.loadFromDisk(table: .AV_CATEGORIES) ?? []
     
     var body: some View {
         if flows.isEmpty {
@@ -17,15 +17,36 @@ struct WorkflowTabView: View {
         } else {
             NavigationStack {
                 List {
-                    ForEach(flows) { workflow in
-                        NavigationLink(workflow.fields.title) {
-                            WorkflowView(workflow: workflow)
-                                .toolbar(.hidden, for: .tabBar)
-                        }
+                    ForEach(categories) { category in
+                        WorkflowSectionView(category: category, flows: filteredWorkflows(for: category))
                     }
-                }.navigationTitle("Workflows")
+                }
+                .navigationTitle("Workflows")
+            }
+        }
+    }
+    
+    private func filteredWorkflows(for category: AVCategory) -> [Workflow] {
+        flows.filter { $0.fields.avCategory.first == category.id }
+    }
+}
+
+struct WorkflowSectionView: View {
+    var category: AVCategory
+    var flows: [Workflow]
+    
+    var body: some View {
+        if !flows.isEmpty {
+            Section(header: Text(category.fields.name)) {
+                ForEach(flows) { workflow in
+                    NavigationLink(workflow.fields.title) {
+                        WorkflowView(workflow: workflow)
+                            .toolbar(.hidden, for: .tabBar)
+                    }
+                }
             }
         }
     }
 }
+
 

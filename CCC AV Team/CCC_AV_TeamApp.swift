@@ -12,7 +12,7 @@ struct CCC_AV_Team: App {
     @State private var dataFetched = false
     private let dispatchGroup = DispatchGroup()
     
-    private var pullData: Bool { UserDefaults.standard.bool(forKey: "pullData") }
+    private var pullData: Bool { UserDefaults.standard.bool(forKey: AppDefaults.pullDataKey) }
     
     var body: some Scene {
         WindowGroup {
@@ -23,6 +23,9 @@ struct CCC_AV_Team: App {
                     Spacer()
                     ProgressView("Pulling data...")
                         .onAppear {
+                            
+                            AppDefaults.initializeDefaults()
+                            
                             if pullData {
                                 Task {
                                     await loadData()

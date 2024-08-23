@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsTabView: View {
-    @AppStorage("pullData") var pullData = true
+    @AppStorage(AppDefaults.pullDataKey) var pullData = true
     var body: some View {
         NavigationStack {
             List {

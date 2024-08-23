@@ -33,6 +33,7 @@
 		07C0FC562C779444002840D2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC552C779444002840D2 /* Logger.swift */; };
 		07C0FC582C77A1C4002840D2 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC572C77A1C4002840D2 /* ImageSize.swift */; };
 		07C0FC5B2C77C44C002840D2 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */; };
+		ACFA851D2C78EAA200CBCD55 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		07C0FC552C779444002840D2 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		07C0FC572C77A1C4002840D2 /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
 		07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				07C0FC352C778A49002840D2 /* AV_Category.swift */,
 				07C0FC552C779444002840D2 /* Logger.swift */,
 				07C0FC572C77A1C4002840D2 /* ImageSize.swift */,
+				ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				07C0FC502C778B90002840D2 /* TSOptionView.swift in Sources */,
 				07C0FC4A2C778B2E002840D2 /* QuickFixView.swift in Sources */,
 				07C0FC4C2C778B6E002840D2 /* WorkflowView.swift in Sources */,
+				ACFA851D2C78EAA200CBCD55 /* AppDefaults.swift in Sources */,
 				07C0FC3A2C778A6D002840D2 /* StepTroubleshootingOption.swift in Sources */,
 				07C0FC172C7788C7002840D2 /* CCC_AV_TeamApp.swift in Sources */,
 				07C0FC2A2C7789D9002840D2 /* AirtableManager.swift in Sources */,
@@ -436,7 +440,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "CCC AV Team/CCC_AV_Team.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CCC AV Team/Preview Content\"";
 				DEVELOPMENT_TEAM = 8462243PH7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -477,7 +481,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "CCC AV Team/CCC_AV_Team.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CCC AV Team/Preview Content\"";
 				DEVELOPMENT_TEAM = 8462243PH7;
 				ENABLE_HARDENED_RUNTIME = YES;
