@@ -8,10 +8,13 @@
 import Foundation
 
 // Raw values are the directory name in Azure
-enum ImageSize: String {
+enum ImageSize: String, Codable, CaseIterable {
     case Small
     case Medium
     case Large
 }
 
-let globalImageSize: ImageSize = .Medium
+enum ImageAspectRatio: String, CaseIterable, Codable {
+    case wide = "Wide (16x9)"
+    case standard = "Standard (4x3)"
+}

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WorkflowView: View {
+    @AppStorage(AppDefaults.globalImageSizeKey) private var globalImageSize = ImageSize.Medium
+    
     let workflow: Workflow
     var steps: [WorkflowStep]
     
@@ -29,18 +31,27 @@ struct WorkflowView: View {
     @State private var showBottomSheet = false
     @Environment(\.horizontalSizeClass) var hSizeClass
     
-    var tsOptions: [String] {
+    private var tsOptions: [String] {
         let tsOptions: [String] = steps[currentIndex].fields.tsOptions ?? []
         return tsOptions
     }
     
-    var maxImageWidth: CGFloat {
+    private var maxImageWidth: CGFloat {
         if hSizeClass == .regular { 475 } else { 375 }
     }
     
-    var imageFileName: String? {
+    private var imageFileName: String? {
         guard let imageFileName = steps[currentIndex].fields.imageFileName else { return nil }
         return imageFileName
+    }
+    
+    @AppStorage(AppDefaults.imageAspectRatioKey) private var imageAspectRatio = ImageAspectRatio.standard
+    
+    private var ratio: (CGFloat, CGFloat) {
+        switch imageAspectRatio {
+        case .standard: return (4,3)
+        case .wide: return (16,9)
+        }
     }
     
     var body: some View {
@@ -56,7 +67,7 @@ struct WorkflowView: View {
                             image
                                 .resizable()
                                 .scaledToFill()
-                                .frame(height: (maxImageWidth / 16) * 9)
+                                .frame(height: (maxImageWidth / ratio.0) * ratio.1)
                                 .frame(maxWidth: maxImageWidth)
                                 .cornerRadius(12)
                         } else if phase.error != nil {
@@ -64,29 +75,38 @@ struct WorkflowView: View {
                                 Spacer()
                                 VStack(spacing: 12) {
                                     Image(systemName: "exclamationmark.triangle")
-                                    Text("Error loading image")
+                                    Text("Error loading image\n\(imageUrl.absoluteString)")
                                         .font(.footnote)
+                                        .multilineTextAlignment(.center)
                                 }
                                 Spacer()
                             }
-                            .frame(height: 275)
-                            .frame(maxWidth: 475)
+                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                            .frame(maxWidth: maxImageWidth)
                             .background(.red.opacity(0.1))
-                            .cornerRadius(18)
+                            .cornerRadius(12)
                         } else {
                             HStack {
                                 Spacer()
                                 ProgressView()
                                 Spacer()
                             }
-                            .frame(height: 300)
-                            .frame(maxWidth: 475)
+                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                            .frame(maxWidth: maxImageWidth)
                             .background(.ultraThinMaterial)
-                            .cornerRadius(18)
+                            .cornerRadius(12)
                         }
                     }.padding()
                 } else {
-                    Spacer()
+                    HStack {
+                        Text(workflow.fields.title)
+                            .font(.largeTitle)
+                            .bold()
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .padding(.top)
                 }
                 
                 // MARK: WorkflowStep Prompt
@@ -141,8 +161,8 @@ struct WorkflowView: View {
                 }
             }
         }.padding()
-            .navigationTitle(workflow.fields.title)
-            .navigationBarTitleDisplayMode(imageFileName == nil ? .large : .inline)
+            .navigationTitle(imageFileName == nil ? "" : workflow.fields.title)
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
