@@ -93,6 +93,7 @@ struct WorkflowView: View {
                 HStack {
                     Text(steps[currentIndex].fields.prompt)
                         .font(.body)
+                        .monospaced()
                         .multilineTextAlignment(.leading)
                     Spacer()
                 }

@@ -23,9 +23,11 @@ struct TSOptionView: View {
                     Text(option?.fields.prompt ?? "error")
                         .font(.headline)
                         .foregroundStyle(.orange)
+                        .monospaced()
                     Text("\n\(option?.fields.solution ?? "error")")
                         .font(.subheadline)
                         .foregroundStyle(.mint)
+                        .monospaced()
                     Divider()
                         .padding(.vertical)
                 }

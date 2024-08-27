@@ -46,16 +46,21 @@ struct QuickFixView: View {
                     .bold()
                 HStack {
                     ForEach(self.categories) {
-                        TextChip($0.fields.name, tint: .orange)
+                        TextChip($0.fields.name, tint: .gray)
                     }
                     Spacer()
                 }
+                Text("ISSUE")
+                    .font(.headline)
+                    .foregroundStyle(.orange)
                 Text(quickfix.fields.description)
+                    //.monospaced()
                     .padding(.bottom, 22)
                 Text("SOLUTION")
                     .font(.headline)
                     .foregroundStyle(.mint)
                 Text(quickfix.fields.solution)
+                    //.monospaced()
                 Spacer()
             }
             .padding()

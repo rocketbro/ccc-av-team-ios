@@ -15,7 +15,11 @@ struct SettingsTabView: View {
                 Toggle("Pull Server Data on Launch", isOn: $pullData)
                     .tint(.mint)
             }
-            Text(verbatim: "CCC AV Team\nVersion 0.1.1\nDeveloped by Asher Pope\nasher@asherpope.com")
+            Text(verbatim: """
+CCC AV Team | Version \(Bundle.main.appVersion).\(Bundle.main.appBuild)
+Developed by Asher Pope
+asher@asherpope.com
+""")
                 .font(.footnote)
                 .monospaced()
                 .foregroundStyle(.gray)
