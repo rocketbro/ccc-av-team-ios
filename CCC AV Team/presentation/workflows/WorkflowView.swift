@@ -55,10 +55,10 @@ struct WorkflowView: View {
                         if let image = phase.image {
                             image
                                 .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(height: 275)
+                                .scaledToFill()
+                                .frame(height: (maxImageWidth / 16) * 9)
                                 .frame(maxWidth: maxImageWidth)
-                                .cornerRadius(18)
+                                .cornerRadius(12)
                         } else if phase.error != nil {
                             HStack {
                                 Spacer()
@@ -69,7 +69,7 @@ struct WorkflowView: View {
                                 }
                                 Spacer()
                             }
-                            .frame(height: 300)
+                            .frame(height: 275)
                             .frame(maxWidth: 475)
                             .background(.red.opacity(0.1))
                             .cornerRadius(18)
@@ -90,14 +90,16 @@ struct WorkflowView: View {
                 }
                 
                 // MARK: WorkflowStep Prompt
-                HStack {
-                    Text(steps[currentIndex].fields.prompt)
-                        .font(.body)
-                        .monospaced()
-                        .multilineTextAlignment(.leading)
-                    Spacer()
+                ScrollView {
+                    HStack {
+                        Text(steps[currentIndex].fields.prompt)
+                            .font(.body)
+                            .monospaced()
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
                 
                 if imageFileName == nil {
                     Spacer()
@@ -140,7 +142,7 @@ struct WorkflowView: View {
             }
         }.padding()
             .navigationTitle(workflow.fields.title)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(imageFileName == nil ? .large : .inline)
     }
 }
 

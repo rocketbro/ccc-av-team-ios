@@ -50,47 +50,6 @@ struct ContentView: View {
     }
 }
 
-// Placeholder views for each tab
-struct CoursesView: View {
-    var body: some View {
-        NavigationStack {
-            Text("Coming soon!")
-                .navigationTitle("AV Courses")
-                .navigationBarTitleDisplayMode(.large)
-        }
-    }
-}
-
-struct QuickFixesView: View {
-    var body: some View {
-        NavigationStack {
-            Text("Coming soon!")
-                .navigationTitle("QuickFixes")
-                .navigationBarTitleDisplayMode(.large)
-        }
-    }
-}
-
-struct DocumentationView: View {
-    var body: some View {
-        NavigationStack {
-            Text("Coming soon!")
-                .navigationTitle("Documentation")
-                .navigationBarTitleDisplayMode(.large)
-        }
-    }
-}
-
-struct TeamView: View {
-    var body: some View {
-        NavigationStack {
-            Text("Coming soon!")
-                .navigationTitle("AV Team")
-                .navigationBarTitleDisplayMode(.large)
-        }
-    }
-}
-
 
 #Preview {
     ContentView()

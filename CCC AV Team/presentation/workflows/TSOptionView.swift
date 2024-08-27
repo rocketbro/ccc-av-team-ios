@@ -21,7 +21,8 @@ struct TSOptionView: View {
                 ForEach(tsOptions, id: \.self) { tsOption in
                     let option: TroubleshootingOption? = dataManager.findObjectById(table: .STEP_TROUBLESHOOTING_OPTIONS, id: tsOption)
                     Text(option?.fields.prompt ?? "error")
-                        .font(.headline)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
                         .foregroundStyle(.orange)
                         .monospaced()
                     Text("\n\(option?.fields.solution ?? "error")")

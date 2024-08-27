@@ -18,6 +18,7 @@ struct CCC_AV_Team: App {
         WindowGroup {
             if dataFetched {
                 ContentView()
+                    .preferredColorScheme(.dark)
             } else {
                 VStack {
                     Spacer()
@@ -38,11 +39,13 @@ struct CCC_AV_Team: App {
                     Button(role: .cancel, action: {
                         dataFetched = true
                     }, label: {
-                        Label("Skip Data Pull (may use outdated info)", systemImage: "xmark.octagon")
+                        Text("Skip Data Pull (may use outdated info)")
                     })
-                    .padding()
+                    .buttonStyle(.bordered)
+                    .padding(.vertical)
                     .tint(.red)
                 }
+                .preferredColorScheme(.dark)
             }
         }
     }
