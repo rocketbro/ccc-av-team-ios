@@ -66,6 +66,7 @@
 		07C0FC552C779444002840D2 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		07C0FC572C77A1C4002840D2 /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
 		07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		AC2190552C7F8E6D006DC522 /* CCC-AV-Team-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CCC-AV-Team-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AC26A42A2C7E14A600C18013 /* AppVersionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionExtension.swift; sourceTree = "<group>"; };
 		ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +101,7 @@
 		07C0FC152C7788C7002840D2 /* CCC AV Team */ = {
 			isa = PBXGroup;
 			children = (
+				AC2190552C7F8E6D006DC522 /* CCC-AV-Team-Info.plist */,
 				07C0FC3E2C778A99002840D2 /* presentation */,
 				07C0FC2D2C778A06002840D2 /* data */,
 				07C0FC252C77896F002840D2 /* network */,
@@ -450,6 +452,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CCC-AV-Team-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "AV Team";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -491,6 +494,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CCC-AV-Team-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "AV Team";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
