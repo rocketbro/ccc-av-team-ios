@@ -8,13 +8,13 @@
 import Foundation
 
 // Raw values are the directory name in Azure
-enum ImageSize: String, Codable, CaseIterable {
+enum ImageSize: String, Codable, CaseIterable, Hashable {
     case Small
     case Medium
     case Large
 }
 
-enum ImageAspectRatio: String, CaseIterable, Codable {
+enum ImageAspectRatio: String, CaseIterable, Codable, Hashable {
     case wide = "Wide (16x9)"
     case standard = "Standard (4x3)"
 }

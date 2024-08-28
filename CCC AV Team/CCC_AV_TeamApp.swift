@@ -9,19 +9,26 @@ import SwiftUI
 
 @main
 struct CCC_AV_Team: App {
-    @State private var dataFetched = false
     private let dispatchGroup = DispatchGroup()
     
-    private var pullData: Bool { UserDefaults.standard.bool(forKey: AppDefaults.pullDataKey) }
+    @AppStorage(AppDefaults.pullDataKey) var pullData = true
+    @AppStorage(AppDefaults.dataFetchedKey) var dataFetched = false
     
     var body: some Scene {
         WindowGroup {
             if dataFetched {
                 ContentView()
                     .preferredColorScheme(.dark)
+
             } else {
                 VStack {
                     Spacer()
+                    Image("CCC_white")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 300)
+                        .opacity(0.75)
+                        .padding(.vertical, 32)
                     ProgressView("Pulling data...")
                         .onAppear {
                             

@@ -8,7 +8,23 @@
 import SwiftUI
 
 struct WorkflowView: View {
-    @AppStorage(AppDefaults.globalImageSizeKey) private var globalImageSize = ImageSize.Medium
+    @AppStorage(AppDefaults.userAuthenticatedKey) private var userAuthenticated = false
+    
+    private var globalImageSize: ImageSize {
+        let size: String? = UserDefaults.standard.string(forKey: AppDefaults.globalImageSizeKey)
+        var imageSize = ImageSize.Medium
+        
+        if let size = size {
+            switch size {
+            case "Small": imageSize = ImageSize.Small
+            case "Medium": imageSize = ImageSize.Medium
+            case "Large": imageSize = ImageSize.Large
+            default: imageSize = ImageSize.Medium
+            }
+        }
+        
+        return imageSize
+    }
     
     let workflow: Workflow
     var steps: [WorkflowStep]
@@ -111,12 +127,26 @@ struct WorkflowView: View {
                 
                 // MARK: WorkflowStep Prompt
                 ScrollView {
-                    HStack {
-                        Text(steps[currentIndex].fields.prompt)
-                            .font(.body)
-                            .monospaced()
-                            .multilineTextAlignment(.leading)
-                        Spacer()
+                    VStack {
+                        HStack {
+                            Text(steps[currentIndex].fields.prompt)
+                                .font(.body)
+                                .monospaced()
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                        }
+                        if let sensitiveData = steps[currentIndex].fields.sensitiveData {
+                            if userAuthenticated {
+                                HStack {
+                                    Text(sensitiveData)
+                                        .font(.body)
+                                        .monospaced()
+                                        .multilineTextAlignment(.leading)
+                                        .foregroundStyle(.orange)
+                                    Spacer()
+                                }.padding(.vertical)
+                            }
+                        }
                     }
                     .padding(.horizontal)
                 }
@@ -145,7 +175,8 @@ struct WorkflowView: View {
                 Button(action: {
                     showBottomSheet.toggle()
                 }, label: {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemName: "questionmark.circle.fill")
+                        .font(.title2)
                 })
                 .tint(.orange)
                 .sheet(isPresented: $showBottomSheet, content: {
