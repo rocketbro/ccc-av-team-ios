@@ -10,7 +10,7 @@ import Foundation
 enum TableName: String {
     case WORKFLOWS
     case WORKFLOW_STEPS
-    case STEP_TROUBLESHOOTING_OPTIONS
+    case TROUBLESHOOTING_OPTIONS
     case QUICK_FIXES
     case AV_CATEGORIES
 }

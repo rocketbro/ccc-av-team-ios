@@ -54,8 +54,8 @@ class AirtableManager {
             queue.async {
                 Task {
                     do {
-                        let tsOptions: [TroubleshootingOption] = try await self.airtableService.fetchTable(.STEP_TROUBLESHOOTING_OPTIONS)
-                        dataManager.saveToDisk(tsOptions, table: .STEP_TROUBLESHOOTING_OPTIONS)
+                        let tsOptions: [TroubleshootingOption] = try await self.airtableService.fetchTable(.TROUBLESHOOTING_OPTIONS)
+                        dataManager.saveToDisk(tsOptions, table: .TROUBLESHOOTING_OPTIONS)
                         continuation.resume()
                     } catch {
                         continuation.resume(throwing: error)

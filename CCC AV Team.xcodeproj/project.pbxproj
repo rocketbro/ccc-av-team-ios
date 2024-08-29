@@ -19,7 +19,7 @@
 		07C0FC342C778A39002840D2 /* Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC332C778A39002840D2 /* Workflow.swift */; };
 		07C0FC362C778A49002840D2 /* AV_Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC352C778A49002840D2 /* AV_Category.swift */; };
 		07C0FC382C778A5D002840D2 /* WorkflowStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC372C778A5D002840D2 /* WorkflowStep.swift */; };
-		07C0FC3A2C778A6D002840D2 /* StepTroubleshootingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC392C778A6D002840D2 /* StepTroubleshootingOption.swift */; };
+		07C0FC3A2C778A6D002840D2 /* TroubleshootingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC392C778A6D002840D2 /* TroubleshootingOption.swift */; };
 		07C0FC3D2C778A85002840D2 /* QuickFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC3C2C778A85002840D2 /* QuickFix.swift */; };
 		07C0FC412C778AB8002840D2 /* TextChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC402C778AB8002840D2 /* TextChip.swift */; };
 		07C0FC432C778ADC002840D2 /* SwiftUI_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC422C778ADC002840D2 /* SwiftUI_Extensions.swift */; };
@@ -34,6 +34,7 @@
 		07C0FC582C77A1C4002840D2 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC572C77A1C4002840D2 /* ImageSize.swift */; };
 		07C0FC5B2C77C44C002840D2 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */; };
 		AC26A42B2C7E14A600C18013 /* AppVersionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC26A42A2C7E14A600C18013 /* AppVersionExtension.swift */; };
+		ACE110292C8133DC00486EFF /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE110282C8133DC00486EFF /* SplashScreen.swift */; };
 		ACFA851D2C78EAA200CBCD55 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +53,7 @@
 		07C0FC332C778A39002840D2 /* Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workflow.swift; sourceTree = "<group>"; };
 		07C0FC352C778A49002840D2 /* AV_Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AV_Category.swift; sourceTree = "<group>"; };
 		07C0FC372C778A5D002840D2 /* WorkflowStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowStep.swift; sourceTree = "<group>"; };
-		07C0FC392C778A6D002840D2 /* StepTroubleshootingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTroubleshootingOption.swift; sourceTree = "<group>"; };
+		07C0FC392C778A6D002840D2 /* TroubleshootingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroubleshootingOption.swift; sourceTree = "<group>"; };
 		07C0FC3C2C778A85002840D2 /* QuickFix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFix.swift; sourceTree = "<group>"; };
 		07C0FC402C778AB8002840D2 /* TextChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextChip.swift; sourceTree = "<group>"; };
 		07C0FC422C778ADC002840D2 /* SwiftUI_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_Extensions.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
 		AC2190552C7F8E6D006DC522 /* CCC-AV-Team-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CCC-AV-Team-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AC26A42A2C7E14A600C18013 /* AppVersionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionExtension.swift; sourceTree = "<group>"; };
+		ACE110282C8133DC00486EFF /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +154,7 @@
 			children = (
 				07C0FC332C778A39002840D2 /* Workflow.swift */,
 				07C0FC372C778A5D002840D2 /* WorkflowStep.swift */,
-				07C0FC392C778A6D002840D2 /* StepTroubleshootingOption.swift */,
+				07C0FC392C778A6D002840D2 /* TroubleshootingOption.swift */,
 			);
 			path = workflows;
 			sourceTree = "<group>";
@@ -184,6 +186,7 @@
 			children = (
 				07C0FC402C778AB8002840D2 /* TextChip.swift */,
 				07C0FC512C778BA2002840D2 /* RoundedButton.swift */,
+				ACE110282C8133DC00486EFF /* SplashScreen.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				07C0FC582C77A1C4002840D2 /* ImageSize.swift in Sources */,
 				07C0FC432C778ADC002840D2 /* SwiftUI_Extensions.swift in Sources */,
 				07C0FC272C7789AB002840D2 /* Airtable.swift in Sources */,
+				ACE110292C8133DC00486EFF /* SplashScreen.swift in Sources */,
 				07C0FC412C778AB8002840D2 /* TextChip.swift in Sources */,
 				07C0FC342C778A39002840D2 /* Workflow.swift in Sources */,
 				07C0FC3D2C778A85002840D2 /* QuickFix.swift in Sources */,
@@ -316,7 +320,7 @@
 				07C0FC4A2C778B2E002840D2 /* QuickFixView.swift in Sources */,
 				07C0FC4C2C778B6E002840D2 /* WorkflowView.swift in Sources */,
 				ACFA851D2C78EAA200CBCD55 /* AppDefaults.swift in Sources */,
-				07C0FC3A2C778A6D002840D2 /* StepTroubleshootingOption.swift in Sources */,
+				07C0FC3A2C778A6D002840D2 /* TroubleshootingOption.swift in Sources */,
 				07C0FC172C7788C7002840D2 /* CCC_AV_TeamApp.swift in Sources */,
 				07C0FC2A2C7789D9002840D2 /* AirtableManager.swift in Sources */,
 			);

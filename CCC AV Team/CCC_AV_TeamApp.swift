@@ -10,47 +10,29 @@ import SwiftUI
 @main
 struct CCC_AV_Team: App {
     private let dispatchGroup = DispatchGroup()
+    @State private var showHome = false
     
     @AppStorage(AppDefaults.pullDataKey) var pullData = true
     @AppStorage(AppDefaults.dataFetchedKey) var dataFetched = false
     
     var body: some Scene {
         WindowGroup {
-            if dataFetched {
+            if showHome {
                 ContentView()
                     .preferredColorScheme(.dark)
 
             } else {
-                VStack {
-                    Spacer()
-                    Image("CCC_white")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 300)
-                        .opacity(0.75)
-                        .padding(.vertical, 32)
-                    ProgressView("Pulling data...")
-                        .onAppear {
-                            
-                            AppDefaults.initializeDefaults()
-                            
-                            if pullData {
-                                Task {
-                                    await loadData()
-                                }
-                            } else {
-                                dataFetched = true
-                            }
+                SplashScreen(pullData: pullData, dataFetched: $dataFetched) {
+                    if pullData {
+                        Task {
+                            await loadData()
                         }
-                    Spacer()
-                    Button(role: .cancel, action: {
-                        dataFetched = true
-                    }, label: {
-                        Text("Skip Data Pull (may use outdated info)")
-                    })
-                    .buttonStyle(.bordered)
-                    .padding(.vertical)
-                    .tint(.red)
+                    } else {
+                        withAnimation {
+                            dataFetched = true
+                            showHome.toggle()
+                        }
+                    }
                 }
                 .preferredColorScheme(.dark)
             }
@@ -98,7 +80,10 @@ struct CCC_AV_Team: App {
         // Notify when all tasks are completed
         dispatchGroup.notify(queue: .main) {
             Logger.shared.log("Fetched all Airtable data", level: .info)
-            dataFetched = true
+            withAnimation {
+                dataFetched = true
+                showHome.toggle()
+            }
         }
     }
 
