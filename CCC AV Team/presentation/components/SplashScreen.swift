@@ -18,7 +18,7 @@ struct SplashScreen: View {
             Rectangle() // Or any other shape
                 .fill(
                     LinearGradient(
-                        gradient: Gradient(colors: [Color.blue.opacity(0.55), Color.blue.opacity(0.25)]),
+                        gradient: Gradient(colors: [colorFromHex("#1c3040").opacity(0.95), colorFromHex("#1c3040").opacity(0.45)]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
@@ -37,20 +37,23 @@ struct SplashScreen: View {
                     .font(.title3)
                     .multilineTextAlignment(.center)
                 
+                Spacer()
                 
                 ProgressView()
                     .opacity(showProgress ? 1 : 0)
+                    .padding(.vertical)
+                
                 Spacer()
                 
-                Button(role: .cancel, action: {
-                    dataFetched = true
-                }, label: {
-                    Text("Skip Data Pull (may use outdated info)")
-                })
-                .buttonStyle(.bordered)
-                .padding(.vertical)
-                .tint(.orange)
-                .opacity(showProgress ? 1 : 0)
+//                Button(role: .cancel, action: {
+//                    dataFetched = true
+//                }, label: {
+//                    Text("Skip Data Pull (may use outdated info)")
+//                })
+//                .buttonStyle(.bordered)
+//                .padding(.vertical)
+//                .tint(.orange)
+//                .opacity(showProgress ? 1 : 0)
             }
             .zIndex(1)
             .onAppear {
