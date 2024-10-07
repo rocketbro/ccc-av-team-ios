@@ -18,7 +18,7 @@ struct SplashScreen: View {
             Rectangle() // Or any other shape
                 .fill(
                     LinearGradient(
-                        gradient: Gradient(colors: [Color.mint.opacity(0.55), Color.mint.opacity(0.25)]),
+                        gradient: Gradient(colors: [Color.blue.opacity(0.55), Color.blue.opacity(0.25)]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )

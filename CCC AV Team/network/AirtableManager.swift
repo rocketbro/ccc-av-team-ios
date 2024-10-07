@@ -48,6 +48,22 @@ class AirtableManager {
             }
         }
     }
+    
+    func fetchAVImages() async throws {
+        return try await withCheckedThrowingContinuation { continuation in
+            queue.async {
+                Task {
+                    do {
+                        let avImages: [AVImage] = try await self.airtableService.fetchTable(.AV_IMAGES)
+                        dataManager.saveToDisk(avImages, table: .AV_IMAGES)
+                        continuation.resume()
+                    } catch {
+                        continuation.resume(throwing: error)
+                    }
+                }
+            }
+        }
+    }
 
     func fetchTsOptions() async throws {
         return try await withCheckedThrowingContinuation { continuation in

@@ -17,7 +17,7 @@ struct WorkflowStep: Codable, Identifiable, Hashable {
         var index: Int = 0
         var prompt: String = ""
         var sensitiveData: String?
-        var imageFileName: String?
+        var avImageId: [String]?
         var parentWorkflow: [String] = []
     }
 }

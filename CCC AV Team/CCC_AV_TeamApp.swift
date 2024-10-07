@@ -55,6 +55,13 @@ struct CCC_AV_Team: App {
             Logger.shared.log("Downloaded WorkflowSteps", level: .info)
             dispatchGroup.leave()
         }
+        
+        dispatchGroup.enter()
+        Task {
+            await fetchAndSaveAVImages()
+            Logger.shared.log("Downloaded AVImages", level: .info)
+            dispatchGroup.leave()
+        }
 
         dispatchGroup.enter()
         Task {
@@ -99,6 +106,17 @@ struct CCC_AV_Team: App {
     private func fetchAndSaveWorkflowSteps() async {
         do {
             try await airtableManager.fetchWorkflowSteps()
+        } catch {
+            Logger.shared.log("Error: \(error.localizedDescription)", level: .error)
+        }
+    }
+    
+    private func fetchAndSaveAVImages() async {
+        do {
+            try await airtableManager.fetchAVImages()
+            if let fetchedImages: [AVImage] = dataManager.loadFromDisk(table: .AV_IMAGES) {
+                await dataManager.processImages(fetchedImages)
+            }
         } catch {
             Logger.shared.log("Error: \(error.localizedDescription)", level: .error)
         }

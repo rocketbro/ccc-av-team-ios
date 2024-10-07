@@ -34,6 +34,7 @@
 		07C0FC582C77A1C4002840D2 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC572C77A1C4002840D2 /* ImageSize.swift */; };
 		07C0FC5B2C77C44C002840D2 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */; };
 		AC26A42B2C7E14A600C18013 /* AppVersionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC26A42A2C7E14A600C18013 /* AppVersionExtension.swift */; };
+		ACA66C092CB348E60048EBAA /* AVImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA66C082CB348E60048EBAA /* AVImage.swift */; };
 		ACE110292C8133DC00486EFF /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE110282C8133DC00486EFF /* SplashScreen.swift */; };
 		ACFA851D2C78EAA200CBCD55 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
 		AC2190552C7F8E6D006DC522 /* CCC-AV-Team-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CCC-AV-Team-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AC26A42A2C7E14A600C18013 /* AppVersionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionExtension.swift; sourceTree = "<group>"; };
+		ACA66C082CB348E60048EBAA /* AVImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVImage.swift; sourceTree = "<group>"; };
 		ACE110282C8133DC00486EFF /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +138,7 @@
 		07C0FC2D2C778A06002840D2 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				ACA66C072CB348C30048EBAA /* images */,
 				07C0FC3B2C778A7A002840D2 /* quickfixes */,
 				07C0FC322C778A31002840D2 /* workflows */,
 				07C0FC2E2C778A0F002840D2 /* DataManager.swift */,
@@ -226,6 +229,14 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
+		ACA66C072CB348C30048EBAA /* images */ = {
+			isa = PBXGroup;
+			children = (
+				ACA66C082CB348E60048EBAA /* AVImage.swift */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +325,7 @@
 				07C0FC5B2C77C44C002840D2 /* SettingsTabView.swift in Sources */,
 				07C0FC382C778A5D002840D2 /* WorkflowStep.swift in Sources */,
 				07C0FC522C778BA2002840D2 /* RoundedButton.swift in Sources */,
+				ACA66C092CB348E60048EBAA /* AVImage.swift in Sources */,
 				07C0FC362C778A49002840D2 /* AV_Category.swift in Sources */,
 				07C0FC452C778AF7002840D2 /* SearchTabView.swift in Sources */,
 				07C0FC502C778B90002840D2 /* TSOptionView.swift in Sources */,

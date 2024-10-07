@@ -56,9 +56,9 @@ struct WorkflowView: View {
         if hSizeClass == .regular { 475 } else { 375 }
     }
     
-    private var imageFileName: String? {
-        guard let imageFileName = steps[currentIndex].fields.imageFileName else { return nil }
-        return imageFileName
+    private var avImageId: String? {
+        guard let avImageId = steps[currentIndex].fields.avImageId?.first else { return nil }
+        return avImageId
     }
     
     @AppStorage(AppDefaults.imageAspectRatioKey) private var imageAspectRatio = ImageAspectRatio.standard
@@ -75,44 +75,66 @@ struct WorkflowView: View {
             VStack {
                 
                 // MARK: Image
-                if let imageFileName = imageFileName {
-                    let imageUrl = dataManager.generateAzureURL(imageFileName: imageFileName, imageSize: globalImageSize)
+                if let avImageId = avImageId {
+                    //let imageUrl = dataManager.generateAzureURL(imageFileName: avImageId, imageSize: globalImageSize)
                     
-                    AsyncImage(url: imageUrl) { phase in
-                        if let image = phase.image {
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-                                .frame(maxWidth: maxImageWidth)
-                                .cornerRadius(12)
-                        } else if phase.error != nil {
-                            HStack {
-                                Spacer()
-                                VStack(spacing: 12) {
-                                    Image(systemName: "exclamationmark.triangle")
-                                    Text("Error loading image\n\(imageUrl.absoluteString)")
-                                        .font(.footnote)
-                                        .multilineTextAlignment(.center)
-                                }
-                                Spacer()
-                            }
+                    let avImage = dataManager.loadCachedImage(avImageId: avImageId)
+                    
+                    if let avImage {
+                        Image(uiImage: avImage)
+                            .resizable()
+                            .scaledToFill()
                             .frame(height: (maxImageWidth / ratio.0) * ratio.1)
                             .frame(maxWidth: maxImageWidth)
-                            .background(.red.opacity(0.1))
                             .cornerRadius(12)
-                        } else {
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
+                    } else {
+                        HStack {
+                            Spacer()
+                            VStack(spacing: 12) {
+                                Image(systemName: "exclamationmark.triangle")
+                                Text("Error loading image")
+                                    .font(.footnote)
+                                    .multilineTextAlignment(.center)
                             }
-                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-                            .frame(maxWidth: maxImageWidth)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(12)
+                            Spacer()
                         }
-                    }.padding()
+                        .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                        .frame(maxWidth: maxImageWidth)
+                        .background(.red.opacity(0.1))
+                        .cornerRadius(12)
+                    }
+                    
+                    //                    AsyncImage(url: imageUrl) { phase in
+                    //                        if let image = phase.image {
+                    //                            image
+                    //
+                    //                        } else if phase.error != nil {
+                    //                            HStack {
+                    //                                Spacer()
+                    //                                VStack(spacing: 12) {
+                    //                                    Image(systemName: "exclamationmark.triangle")
+                    //                                    Text("Error loading image\n\(imageUrl.absoluteString)")
+                    //                                        .font(.footnote)
+                    //                                        .multilineTextAlignment(.center)
+                    //                                }
+                    //                                Spacer()
+                    //                            }
+                    //                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                    //                            .frame(maxWidth: maxImageWidth)
+                    //                            .background(.red.opacity(0.1))
+                    //                            .cornerRadius(12)
+                    //                        } else {
+                    //                            HStack {
+                    //                                Spacer()
+                    //                                ProgressView()
+                    //                                Spacer()
+                    //                            }
+                    //                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                    //                            .frame(maxWidth: maxImageWidth)
+                    //                            .background(.ultraThinMaterial)
+                    //                            .cornerRadius(12)
+                    //                        }
+                    //                    }.padding()
                 } else {
                     HStack {
                         Text(workflow.fields.title)
@@ -151,7 +173,7 @@ struct WorkflowView: View {
                     .padding(.horizontal)
                 }
                 
-                if imageFileName == nil {
+                if avImageId == nil {
                     Spacer()
                 }
             }
@@ -192,7 +214,7 @@ struct WorkflowView: View {
                 }
             }
         }.padding()
-            .navigationTitle(imageFileName == nil ? "" : workflow.fields.title)
+            .navigationTitle(avImageId == nil ? "" : workflow.fields.title)
             .navigationBarTitleDisplayMode(.inline)
     }
 }
