@@ -75,9 +75,7 @@ struct WorkflowView: View {
             VStack {
                 
                 // MARK: Image
-                if let avImageId = avImageId {
-                    //let imageUrl = dataManager.generateAzureURL(imageFileName: avImageId, imageSize: globalImageSize)
-                    
+                if let avImageId = avImageId {                    
                     let avImage = dataManager.loadCachedImage(avImageId: avImageId)
                     
                     if let avImage {
@@ -104,37 +102,6 @@ struct WorkflowView: View {
                         .cornerRadius(12)
                     }
                     
-                    //                    AsyncImage(url: imageUrl) { phase in
-                    //                        if let image = phase.image {
-                    //                            image
-                    //
-                    //                        } else if phase.error != nil {
-                    //                            HStack {
-                    //                                Spacer()
-                    //                                VStack(spacing: 12) {
-                    //                                    Image(systemName: "exclamationmark.triangle")
-                    //                                    Text("Error loading image\n\(imageUrl.absoluteString)")
-                    //                                        .font(.footnote)
-                    //                                        .multilineTextAlignment(.center)
-                    //                                }
-                    //                                Spacer()
-                    //                            }
-                    //                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-                    //                            .frame(maxWidth: maxImageWidth)
-                    //                            .background(.red.opacity(0.1))
-                    //                            .cornerRadius(12)
-                    //                        } else {
-                    //                            HStack {
-                    //                                Spacer()
-                    //                                ProgressView()
-                    //                                Spacer()
-                    //                            }
-                    //                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-                    //                            .frame(maxWidth: maxImageWidth)
-                    //                            .background(.ultraThinMaterial)
-                    //                            .cornerRadius(12)
-                    //                        }
-                    //                    }.padding()
                 } else {
                     HStack {
                         Text(workflow.fields.title)

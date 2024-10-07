@@ -41,6 +41,7 @@ struct SplashScreen: View {
                 ProgressView()
                     .opacity(showProgress ? 1 : 0)
                 Spacer()
+                
                 Button(role: .cancel, action: {
                     dataFetched = true
                 }, label: {
