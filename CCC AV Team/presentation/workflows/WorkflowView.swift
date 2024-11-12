@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WorkflowView: View {
     @AppStorage(AppDefaults.userAuthenticatedKey) private var userAuthenticated = false
+    @AppStorage(AppDefaults.imageAspectRatioKey) var aspectRatio = ImageAspectRatio.standard.rawValue
     
     private var globalImageSize: ImageSize {
         let size: String? = UserDefaults.standard.string(forKey: AppDefaults.globalImageSizeKey)
@@ -88,44 +89,49 @@ struct WorkflowView: View {
                     let avImageUrl = imageDict[avImageId]
                     
                     
-                    AsyncImage(url: avImageUrl) { phase in
-                        switch phase {
-                        case .empty:
-                            HStack {
-                                Spacer()
-                                ProgressView()
-                                Spacer()
-                            }
-                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-                            .frame(maxWidth: maxImageWidth)
-                            .background(.primary.opacity(0.1))
-                            .cornerRadius(12)
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-                                .frame(maxWidth: maxImageWidth)
-                                .cornerRadius(12)
-                        case .failure(_):
-                            HStack {
-                                Spacer()
-                                VStack(spacing: 12) {
-                                    Image(systemName: "exclamationmark.triangle")
-                                    Text("Error loading image")
-                                        .font(.footnote)
-                                        .multilineTextAlignment(.center)
+                    GeometryReader { geometry in
+                        AsyncImage(url: avImageUrl) { phase in
+                            switch phase {
+                            case .empty:
+                                HStack {
+                                    Spacer()
+                                    ProgressView()
+                                    Spacer()
                                 }
-                                Spacer()
+                                .frame(width: geometry.size.width)
+                                .frame(height: geometry.size.width * (ratio.1 / ratio.0))
+                                .background(.primary.opacity(0.1))
+                                .cornerRadius(12)
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: geometry.size.width)
+                                    .frame(height: geometry.size.width * (ratio.1 / ratio.0))
+                                    .clipped()
+                                    .cornerRadius(12)
+                            case .failure(_):
+                                HStack {
+                                    Spacer()
+                                    VStack(spacing: 12) {
+                                        Image(systemName: "exclamationmark.triangle")
+                                        Text("Error loading image")
+                                            .font(.footnote)
+                                            .multilineTextAlignment(.center)
+                                    }
+                                    Spacer()
+                                }
+                                .frame(width: geometry.size.width)
+                                .frame(height: geometry.size.width * (ratio.1 / ratio.0))
+                                .background(.red.opacity(0.1))
+                                .cornerRadius(12)
+                            @unknown default:
+                                EmptyView()
                             }
-                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-                            .frame(maxWidth: maxImageWidth)
-                            .background(.red.opacity(0.1))
-                            .cornerRadius(12)
-                        @unknown default:
-                            EmptyView()
                         }
                     }
+                    .aspectRatio(ratio.0 / ratio.1, contentMode: .fill)
+                    .padding(.horizontal)
                     
                     
                     //                    if let avImage {
@@ -235,6 +241,21 @@ struct WorkflowView: View {
         .padding(.bottom)
         .navigationTitle(avImageId == nil ? "" : workflow.fields.title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if avImageId != nil {
+                ToolbarItem {
+                    Menu {
+                        Picker("Image Size", selection: $aspectRatio) {
+                            ForEach(ImageAspectRatio.allCases, id: \.self) {
+                                Text($0.rawValue).tag($0.rawValue)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "photo")
+                    }
+                }
+            }
+        }
     }
     
 }

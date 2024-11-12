@@ -19,7 +19,7 @@ struct CCC_AV_Team: App {
         WindowGroup {
             if showHome {
                 ContentView()
-                    .preferredColorScheme(.dark)
+                    //.preferredColorScheme(.dark)
                     .onChange(of: dataFetched) { _ in
                         if dataFetched == false {
                             showHome.toggle()

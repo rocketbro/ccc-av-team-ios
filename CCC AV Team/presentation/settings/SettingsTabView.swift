@@ -75,20 +75,30 @@ struct SettingsTabView: View {
                         .monospaced()
                 }
                 
+                Section {
+                    HStack {
+                        Spacer()
+                        Text("""
+        CCC AV Team | Version \(Bundle.main.appVersion).\(Bundle.main.appBuild)
+        Developed by Intrinsic Labs LLC
+        helloworld@intrinsiclabs.co
+        """)
+                        .font(.footnote)
+                        .monospaced()
+                        .foregroundStyle(.gray)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                        
+                        Spacer()
+                    }
+                    
+                }
+                
                 
             }
             .navigationTitle("Settings")
-            
-            Text("""
-CCC AV Team | Version \(Bundle.main.appVersion).\(Bundle.main.appBuild)
-Developed by Intrinsic Labs LLC
-helloworld@intrinsiclabs.co
-""")
-            .font(.footnote)
-            .monospaced()
-            .foregroundStyle(.gray)
-            .multilineTextAlignment(.center)
-            .padding(.vertical, 48)
         }
     }
 }
