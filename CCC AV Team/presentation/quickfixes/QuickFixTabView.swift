@@ -41,7 +41,6 @@ struct QuickFixSectionView: View {
                 ForEach(quickfixes) { quickfix in
                     NavigationLink(quickfix.fields.title) {
                         QuickFixView(quickfix: quickfix)
-                            .toolbar(.hidden, for: .tabBar)
                     }
                 }
             }

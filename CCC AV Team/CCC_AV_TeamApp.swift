@@ -20,6 +20,11 @@ struct CCC_AV_Team: App {
             if showHome {
                 ContentView()
                     .preferredColorScheme(.dark)
+                    .onChange(of: dataFetched) { _ in
+                        if dataFetched == false {
+                            showHome.toggle()
+                        }
+                    }
 
             } else {
                 SplashScreen(pullData: pullData, dataFetched: $dataFetched) {

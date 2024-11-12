@@ -41,7 +41,6 @@ struct WorkflowSectionView: View {
                 ForEach(flows) { workflow in
                     NavigationLink(workflow.fields.title) {
                         WorkflowView(workflow: workflow)
-                            .toolbar(.hidden, for: .tabBar)
                     }
                 }
             }

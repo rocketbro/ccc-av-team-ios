@@ -81,6 +81,7 @@ struct WorkflowView: View {
     var body: some View {
         VStack(alignment: .center) {
             VStack {
+                Spacer()
                 
                 // MARK: Image
                 if let avImageId = avImageId {
@@ -127,29 +128,29 @@ struct WorkflowView: View {
                     }
                     
                     
-//                    if let avImage {
-//                        Image(uiImage: avImage)
-//                            .resizable()
-//                            .scaledToFill()
-//                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-//                            .frame(maxWidth: maxImageWidth)
-//                            .cornerRadius(12)
-//                    } else {
-//                        HStack {
-//                            Spacer()
-//                            VStack(spacing: 12) {
-//                                Image(systemName: "exclamationmark.triangle")
-//                                Text("Error loading image")
-//                                    .font(.footnote)
-//                                    .multilineTextAlignment(.center)
-//                            }
-//                            Spacer()
-//                        }
-//                        .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-//                        .frame(maxWidth: maxImageWidth)
-//                        .background(.red.opacity(0.1))
-//                        .cornerRadius(12)
-//                    }
+                    //                    if let avImage {
+                    //                        Image(uiImage: avImage)
+                    //                            .resizable()
+                    //                            .scaledToFill()
+                    //                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                    //                            .frame(maxWidth: maxImageWidth)
+                    //                            .cornerRadius(12)
+                    //                    } else {
+                    //                        HStack {
+                    //                            Spacer()
+                    //                            VStack(spacing: 12) {
+                    //                                Image(systemName: "exclamationmark.triangle")
+                    //                                Text("Error loading image")
+                    //                                    .font(.footnote)
+                    //                                    .multilineTextAlignment(.center)
+                    //                            }
+                    //                            Spacer()
+                    //                        }
+                    //                        .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                    //                        .frame(maxWidth: maxImageWidth)
+                    //                        .background(.red.opacity(0.1))
+                    //                        .cornerRadius(12)
+                    //                    }
                     
                 } else {
                     HStack {
@@ -180,13 +181,13 @@ struct WorkflowView: View {
                                         .font(.body)
                                         .monospaced()
                                         .multilineTextAlignment(.leading)
-                                        .foregroundStyle(.orange)
+                                        .foregroundStyle(.red)
                                     Spacer()
                                 }.padding(.vertical)
                             }
                         }
                     }
-                    .padding(.horizontal)
+                    .padding()
                 }
                 
                 if avImageId == nil {
@@ -195,12 +196,12 @@ struct WorkflowView: View {
             }
         }
         
-        Spacer()
+        
         
         // MARK: Prev & Next nav
         HStack { // nav menu
             
-            RoundedButton("Prev", tint: currentIndex > steps.startIndex ? .mint : .gray) {
+            RoundedButton("Prev", tint: currentIndex > steps.startIndex ? .primary : .gray) {
                 if currentIndex > steps.startIndex {
                     currentIndex -= 1
                 }
@@ -216,7 +217,7 @@ struct WorkflowView: View {
                     Image(systemName: "questionmark.circle.fill")
                         .font(.title2)
                 })
-                .tint(.orange)
+                .tint(.accent)
                 .sheet(isPresented: $showBottomSheet, content: {
                     TSOptionView(tsOptions: tsOptions)
                 })
@@ -224,14 +225,17 @@ struct WorkflowView: View {
             
             Spacer()
             
-            RoundedButton("Next", tint: currentIndex < (steps.count - 1) ? .mint : .gray) {
+            RoundedButton("Next", tint: currentIndex < (steps.count - 1) ? .primary : .gray) {
                 if currentIndex < (steps.count - 1) {
                     currentIndex += 1
                 }
             }
-        }.padding()
-            .navigationTitle(avImageId == nil ? "" : workflow.fields.title)
-            .navigationBarTitleDisplayMode(.inline)
+        }
+        .padding()
+        .padding(.bottom)
+        .navigationTitle(avImageId == nil ? "" : workflow.fields.title)
+        .navigationBarTitleDisplayMode(.inline)
     }
+    
 }
 

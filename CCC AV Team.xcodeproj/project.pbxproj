@@ -35,6 +35,7 @@
 		07C0FC5B2C77C44C002840D2 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */; };
 		AC1E9F082CB469D900068113 /* ColorFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E9F072CB469D900068113 /* ColorFromHex.swift */; };
 		AC26A42B2C7E14A600C18013 /* AppVersionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC26A42A2C7E14A600C18013 /* AppVersionExtension.swift */; };
+		AC4B1FF32CE3DE5900919650 /* AuthenticationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4B1FF22CE3DE5900919650 /* AuthenticationSheet.swift */; };
 		ACA66C092CB348E60048EBAA /* AVImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA66C082CB348E60048EBAA /* AVImage.swift */; };
 		ACE110292C8133DC00486EFF /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE110282C8133DC00486EFF /* SplashScreen.swift */; };
 		ACFA851D2C78EAA200CBCD55 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */; };
@@ -72,6 +73,7 @@
 		AC1E9F072CB469D900068113 /* ColorFromHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFromHex.swift; sourceTree = "<group>"; };
 		AC2190552C7F8E6D006DC522 /* CCC-AV-Team-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CCC-AV-Team-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AC26A42A2C7E14A600C18013 /* AppVersionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionExtension.swift; sourceTree = "<group>"; };
+		AC4B1FF22CE3DE5900919650 /* AuthenticationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSheet.swift; sourceTree = "<group>"; };
 		ACA66C082CB348E60048EBAA /* AVImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVImage.swift; sourceTree = "<group>"; };
 		ACE110282C8133DC00486EFF /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		ACFA851C2C78EAA200CBCD55 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				07C0FC5A2C77C44C002840D2 /* SettingsTabView.swift */,
+				AC4B1FF22CE3DE5900919650 /* AuthenticationSheet.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07C0FC542C778BB9002840D2 /* QuickFixTabView.swift in Sources */,
+				AC4B1FF32CE3DE5900919650 /* AuthenticationSheet.swift in Sources */,
 				07C0FC562C779444002840D2 /* Logger.swift in Sources */,
 				07C0FC312C778A1F002840D2 /* TableName.swift in Sources */,
 				07C0FC2C2C7789F3002840D2 /* Auth.swift in Sources */,
