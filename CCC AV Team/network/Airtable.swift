@@ -35,6 +35,10 @@ struct Airtable: AirtableService {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         
+//        if table == .AV_IMAGES {
+//            print(String(data: data, encoding: .utf8)!)
+//        }
+        
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let decodedResponse = try decoder.decode(AirtableResponse<T>.self, from: data)

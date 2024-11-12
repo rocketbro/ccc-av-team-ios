@@ -28,6 +28,14 @@ struct WorkflowView: View {
     
     let workflow: Workflow
     var steps: [WorkflowStep]
+    var imageDict: [String:URL] {
+        if let fetchedImages: [AVImage] = dataManager.loadFromDisk(table: .AV_IMAGES) {
+            let dict = dataManager.processImages(fetchedImages)
+            return dict
+        } else {
+            return [:]
+        }
+    }
     
     init(workflow: Workflow) {
         self.workflow = workflow
@@ -75,32 +83,73 @@ struct WorkflowView: View {
             VStack {
                 
                 // MARK: Image
-                if let avImageId = avImageId {                    
-                    let avImage = dataManager.loadCachedImage(avImageId: avImageId)
+                if let avImageId = avImageId {
+                    let avImageUrl = imageDict[avImageId]
                     
-                    if let avImage {
-                        Image(uiImage: avImage)
-                            .resizable()
-                            .scaledToFill()
+                    
+                    AsyncImage(url: avImageUrl) { phase in
+                        switch phase {
+                        case .empty:
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
                             .frame(height: (maxImageWidth / ratio.0) * ratio.1)
                             .frame(maxWidth: maxImageWidth)
+                            .background(.primary.opacity(0.1))
                             .cornerRadius(12)
-                    } else {
-                        HStack {
-                            Spacer()
-                            VStack(spacing: 12) {
-                                Image(systemName: "exclamationmark.triangle")
-                                Text("Error loading image")
-                                    .font(.footnote)
-                                    .multilineTextAlignment(.center)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                                .frame(maxWidth: maxImageWidth)
+                                .cornerRadius(12)
+                        case .failure(_):
+                            HStack {
+                                Spacer()
+                                VStack(spacing: 12) {
+                                    Image(systemName: "exclamationmark.triangle")
+                                    Text("Error loading image")
+                                        .font(.footnote)
+                                        .multilineTextAlignment(.center)
+                                }
+                                Spacer()
                             }
-                            Spacer()
+                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+                            .frame(maxWidth: maxImageWidth)
+                            .background(.red.opacity(0.1))
+                            .cornerRadius(12)
+                        @unknown default:
+                            EmptyView()
                         }
-                        .frame(height: (maxImageWidth / ratio.0) * ratio.1)
-                        .frame(maxWidth: maxImageWidth)
-                        .background(.red.opacity(0.1))
-                        .cornerRadius(12)
                     }
+                    
+                    
+//                    if let avImage {
+//                        Image(uiImage: avImage)
+//                            .resizable()
+//                            .scaledToFill()
+//                            .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+//                            .frame(maxWidth: maxImageWidth)
+//                            .cornerRadius(12)
+//                    } else {
+//                        HStack {
+//                            Spacer()
+//                            VStack(spacing: 12) {
+//                                Image(systemName: "exclamationmark.triangle")
+//                                Text("Error loading image")
+//                                    .font(.footnote)
+//                                    .multilineTextAlignment(.center)
+//                            }
+//                            Spacer()
+//                        }
+//                        .frame(height: (maxImageWidth / ratio.0) * ratio.1)
+//                        .frame(maxWidth: maxImageWidth)
+//                        .background(.red.opacity(0.1))
+//                        .cornerRadius(12)
+//                    }
                     
                 } else {
                     HStack {

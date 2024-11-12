@@ -114,9 +114,6 @@ struct CCC_AV_Team: App {
     private func fetchAndSaveAVImages() async {
         do {
             try await airtableManager.fetchAVImages()
-            if let fetchedImages: [AVImage] = dataManager.loadFromDisk(table: .AV_IMAGES) {
-                await dataManager.processImages(fetchedImages)
-            }
         } catch {
             Logger.shared.log("Error: \(error.localizedDescription)", level: .error)
         }
